@@ -84,7 +84,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
           <p>Parent Company: VASS Systems LLP</p>
-          <p>VASS Arcade, P.O. Mayanad, Kozhikode-673010</p>
+          <p>18/505H, Mayanad, Kerala, India - 673008</p>
           <p className="mt-4">&copy; {new Date().getFullYear()} Temple Address. All rights reserved.</p>
         </div>
       </div>

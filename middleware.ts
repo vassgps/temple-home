@@ -4,39 +4,39 @@ import type { NextRequest } from "next/server"
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
   const token = request.cookies.get("next-auth.session-token")
-  const secureToken = request.cookies.get("__Secure-next-auth.session-token")
+  const { pathname } = request.nextUrl
 
-  if (!token && !secureToken) {
-    if (request.nextUrl.pathname.startsWith("/profile")) {
-      return NextResponse.redirect(new URL("/auth/login", request.url))
-    }
+  // Make sure /listing/* paths are excluded from authentication
+  const publicPaths = [
+    "/",
+    "/about",
+    "/contact",
+    "/search",
+    "/listing", // Add this to make all listing pages public
+    "/thank-you",
+    "/offline",
+  ]
 
-    if (request.nextUrl.pathname.startsWith("/wallet")) {
-      return NextResponse.redirect(new URL("/auth/login", request.url))
-    }
-
-    if (request.nextUrl.pathname.startsWith("/add-listing")) {
-      return NextResponse.redirect(new URL("/auth/login", request.url))
-    }
-
-    if (request.nextUrl.pathname.startsWith("/admin")) {
-      return NextResponse.redirect(new URL("/auth/login", request.url))
-    }
+  // Update the matcher to exclude listing pages
+  if (publicPaths.some((path) => pathname.startsWith(path)) || pathname.includes("/listing/")) {
+    return NextResponse.next()
   }
 
-  // Also update the middleware function to explicitly allow listing pages
-  if (request.nextUrl.pathname.startsWith("/listing/")) {
-    return NextResponse.next()
+  if (!token && pathname !== "/login") {
+    return NextResponse.redirect(new URL("/login", request.url))
   }
 }
 
-// Update the matcher to exclude listing detail pages
+// See "Matching Paths" below to learn more
 export const config = {
   matcher: [
-    "/profile/:path*",
-    "/wallet/:path*",
-    "/add-listing/:path*",
-    "/admin/:path*",
-    // Remove any patterns that would match /listing/* pages
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
   ],
 }

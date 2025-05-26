@@ -127,7 +127,7 @@ interface ListingDetail {
   bank_ifsc_code: string | null
   contact_number: string | null
   ownership_type: string | null
-  payment_methods: any | null
+  payment_methods: string | null
   bank_branch_name: string | null
   related_listings: RelatedListing[]
   bank_account_name: string | null
@@ -139,243 +139,12 @@ interface ListingDetail {
   contact_person_designation: string | null
 }
 
-// Comprehensive sample data for different temples
-const sampleListings: Record<string, ListingDetail> = {
-  "sree-palakkottu-kshethram": {
-    city: "Kozhikode",
-    jdoc: {},
-    slug: "sree-palakkottu-kshethram",
-    tags: [{ name: "Ancient Temple" }, { name: "Lord Shiva" }, { name: "Kerala" }],
-    uuid: "6a5c63d3-bd9d-4dc0-baee-93178c80f19d",
-    email: "info@palakkottukshethram.org",
-    image:
-      "https://templesaddress.s3.amazonaws.com/develop/media/cms/listings/6a5c63d3-bd9d-4dc0-baee-93178c80f19d/palakkottu_temple_16.jpg",
-    state: "Kerala",
-    story:
-      "Sree Palakkottu Kshethram is an ancient temple with a rich history dating back several centuries. The temple is known for its unique architectural style and spiritual significance in the region.",
-    title: "Sree Palakkottu Kshethram",
-    midday: "12:00 PM - 1:00 PM",
-    poojas: [
-      {
-        uuid: "pooja-1",
-        name: "Abhishekam",
-        details: "Special abhishekam performed daily for Lord Shiva",
-        image: "/pooja-1.png",
-        cost: "₹101",
-        timing: {
-          start: "6:00 AM",
-          end: "7:00 AM",
-        },
-        booking_allowed: true,
-      },
-      {
-        uuid: "pooja-2",
-        name: "Evening Aarti",
-        details: "Daily evening aarti with devotional songs",
-        image: "/pooja-2.png",
-        cost: "₹51",
-        timing: {
-          start: "6:30 PM",
-          end: "7:30 PM",
-        },
-        booking_allowed: true,
-      },
-    ],
-    status: "VERIFIED",
-    upi_id: "palakkottu@upi",
-    address: "Sree Palakkottu Kshethram\nMayanad, Kozhikode\nKerala - 673007",
-    country: "India",
-    deities: [
-      {
-        name: "Lord Shiva",
-        slug: "lord-shiva",
-        image: "/krishna-deity.png",
-      },
-      {
-        name: "Goddess Parvati",
-        slug: "goddess-parvati",
-        image: null,
-      },
-    ],
-    details:
-      "Sree Palakkottu Kshethram is an ancient temple dedicated to Lord Shiva, located in the serene village of Mayanad in Kozhikode district. The temple is renowned for its traditional Kerala architecture and peaceful ambiance that attracts devotees from far and wide.",
-    evening: "6:00 PM - 8:00 PM",
-    history:
-      "The temple has a history spanning over 500 years. It was built by the local chieftains and has been maintained by the community through generations. The temple has witnessed many historical events and continues to be a center of spiritual and cultural activities.",
-    morning: "5:30 AM - 11:30 AM",
-    remarks:
-      "Visitors are requested to maintain silence and follow temple traditions. Photography is allowed in the outer premises only.",
-    twitter: "https://twitter.com/palakkottukshethram",
-    website: "https://www.palakkottukshethram.org",
-    youtube: "https://youtube.com/palakkottukshethram",
-    zipcode: "673007",
-    category: {
-      name: "Hindu Temples",
-      slug: "hindu-temples",
-      image: "/hindu-temple-category.png",
-    },
-    facebook: "https://facebook.com/palakkottukshethram",
-    landmark: "Near Mayanad Post Office",
-    latitude: 11.2588,
-    location: "Mayanad",
-    subtitle: "Ancient Shiva Temple in Mayanad",
-    whatsapp: "+919876543210",
-    instagram: "https://instagram.com/palakkottukshethram",
-    is_active: true,
-    languages: [{ name: "Malayalam" }, { name: "English" }, { name: "Hindi" }],
-    longitude: 75.7804,
-    subdomain: null,
-    created_at: "2025-05-26T09:03:45.158644+00:00",
-    created_by: {
-      name: "Temple Administrator",
-      email: "admin@palakkottukshethram.org",
-      profile_image: null,
-    },
-    main_deity: {
-      name: "Lord Shiva",
-      slug: "lord-shiva",
-      image: "/krishna-deity.png",
-    },
-    speciality:
-      "Famous for its peaceful ambiance and traditional Kerala architecture. The temple is known for fulfilling devotees' wishes and is particularly visited during Shivaratri.",
-    updated_at: "2025-05-26T12:00:00.000000+00:00",
-    updated_by: null,
-    upi_qr_code: "/qr-code.png",
-    listing_type: "temples",
-    gallery_items: [
-      {
-        uuid: "gallery-1",
-        file: "/guruvayur-temple-1.png",
-        file_type: "image",
-        meta_description: "Main temple entrance",
-      },
-      {
-        uuid: "gallery-2",
-        file: "/guruvayur-temple-2.png",
-        file_type: "image",
-        meta_description: "Temple sanctum",
-      },
-      {
-        uuid: "gallery-3",
-        file: "/guruvayur-temple-3.png",
-        file_type: "image",
-        meta_description: "Festival celebrations",
-      },
-    ],
-    kyc_documents: null,
-    bank_ifsc_code: "SBIN0001234",
-    contact_number: "+919876543210",
-    ownership_type: "Trust",
-    payment_methods: {
-      upi: true,
-      bank_transfer: true,
-      cash: true,
-    },
-    bank_branch_name: "State Bank of India, Mayanad",
-    related_listings: [
-      {
-        uuid: "5b351dff-4ea7-47fc-80ea-86f95bcc20fa",
-        title: "Thiruthikkavu Kshethram",
-        slug: "thiruthikkavu-kshethram",
-      },
-    ],
-    bank_account_name: "Sree Palakkottu Kshethram Trust",
-    seeking_donations: true,
-    ownership_verified: true,
-    bank_account_number: "12345678901",
-    contact_person_name: "Rajesh Kumar",
-    contact_person_phone: "+919876543210",
-    contact_person_designation: "Temple Secretary",
-  },
-  "thiruthikkavu-kshethram": {
-    city: "Kozhikode",
-    jdoc: {},
-    slug: "thiruthikkavu-kshethram",
-    tags: [{ name: "Nagas" }, { name: "Sarpam" }, { name: "Kerala" }],
-    uuid: "5b351dff-4ea7-47fc-80ea-86f95bcc20fa",
-    email: null,
-    image:
-      "https://templesaddress.s3.amazonaws.com/develop/media/cms/listings/5b351dff-4ea7-47fc-80ea-86f95bcc20fa/thiruthikkavu_01.jpeg",
-    state: "Kerala",
-    story: "Thiruthikkavu is a sacred place known for its connection with serpent worship and ancient traditions.",
-    title: "Thiruthikkavu Kshethram",
-    midday: null,
-    poojas: [],
-    status: "VERIFIED",
-    upi_id: null,
-    address: "Thiruthikkavu, Palakkottu vayal\nP.O. Kottamparamba, Kozhikode\nKerala - 673008",
-    country: "India",
-    deities: [
-      {
-        name: "Nagas (Sarpam)",
-        slug: "nagas-sarpam",
-        image: null,
-      },
-    ],
-    details:
-      "Thiruthikkavu is Located beside of Calicut CERDM Bypass road. Main Deity is Kirathamoorthy and Famous for Nagas.",
-    evening: "Nil",
-    history: "An ancient temple with deep roots in serpent worship traditions of Kerala.",
-    morning: "6:15AM - 8:30AM",
-    remarks: "Special prayers for Nagas are conducted here.",
-    twitter: null,
-    website: null,
-    youtube: null,
-    zipcode: "673008",
-    category: {
-      name: "Hindu Temples",
-      slug: "hindu-temples-1",
-      image: null,
-    },
-    facebook: null,
-    landmark: "Thiruhikkavu",
-    latitude: 11.25,
-    location: "Palakkottu vayal",
-    subtitle: "Chelavoor Thiruthikkavu temple",
-    whatsapp: null,
-    instagram: null,
-    is_active: true,
-    languages: [],
-    longitude: 75.77,
-    subdomain: null,
-    created_at: "2025-05-03T14:28:03.563393+00:00",
-    created_by: {
-      name: "Anand",
-      email: null,
-      profile_image: null,
-    },
-    main_deity: {
-      name: "Kirathamoorthy",
-      slug: "kirathamoorthy",
-      image: null,
-    },
-    speciality: "Famous for Naga worship and traditional rituals",
-    updated_at: "2025-05-17T11:00:16.336082+00:00",
-    updated_by: null,
-    upi_qr_code: null,
-    listing_type: "temples",
-    gallery_items: [],
-    kyc_documents: null,
-    bank_ifsc_code: null,
-    contact_number: null,
-    ownership_type: null,
-    payment_methods: null,
-    bank_branch_name: null,
-    related_listings: [
-      {
-        uuid: "6a5c63d3-bd9d-4dc0-baee-93178c80f19d",
-        title: "Sree Palakkottu kshethram",
-        slug: "sree-palakkottu-kshethram",
-      },
-    ],
-    bank_account_name: null,
-    seeking_donations: false,
-    ownership_verified: false,
-    bank_account_number: null,
-    contact_person_name: "Bhaskaran Nair",
-    contact_person_phone: null,
-    contact_person_designation: null,
-  },
+interface ApiResponse {
+  success: boolean
+  message: string
+  data: ListingDetail
+  errors: any
+  timestamp: string
 }
 
 export default function ListingDetailPage({ params }: { params: { slug: string } }) {
@@ -384,67 +153,74 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
   const [listing, setListing] = useState<ListingDetail | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [usedFallbackData, setUsedFallbackData] = useState(false)
   const [isShareDropdownOpen, setIsShareDropdownOpen] = useState(false)
 
   useEffect(() => {
     const fetchListingData = async () => {
       setIsLoading(true)
       setError(null)
-      setUsedFallbackData(false)
 
       try {
-        console.log(`Loading listing for slug: ${params.slug}`)
+        console.log(`Fetching data for slug: ${params.slug}`)
 
-        // For now, always use sample data to avoid API issues
-        // This ensures the page always works without authentication
+        const response = await fetch(`https://app.templeaddress.com/api/v1/cms/listings/${params.slug}/`, {
+          headers: {
+            accept: "application/json",
+            "X-CSRFTOKEN": "Xh34Ju2QXd5Aej2S3FDL979SHavazMFdPTc8yoQguVPaNQb0O59aVwGW2TwfwWfO",
+          },
+          cache: "no-store",
+        })
 
-        if (sampleListings[params.slug]) {
-          console.log(`Found sample data for: ${params.slug}`)
-          setListing(sampleListings[params.slug])
-          setUsedFallbackData(true)
-        } else {
-          console.log(`No specific sample data for: ${params.slug}, using default`)
-          // Create a generic listing for unknown slugs
-          const genericListing: ListingDetail = {
-            ...sampleListings["sree-palakkottu-kshethram"],
-            slug: params.slug,
-            uuid: `generic-${params.slug}`,
-            title: params.slug
-              .split("-")
-              .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-              .join(" "),
-            subtitle: "Temple in Kerala",
-            details: `This is a temple listing for ${params.slug}. This is sample data for demonstration purposes.`,
-            image: "/temple-placeholder.png",
+        console.log(`API response status: ${response.status}`)
+
+        if (!response.ok) {
+          if (response.status === 404) {
+            throw new Error("Listing not found")
           }
-          setListing(genericListing)
-          setUsedFallbackData(true)
+          throw new Error(`API error: ${response.status} ${response.statusText}`)
         }
 
-        // Set page title dynamically
-        if (listing) {
-          document.title = `${listing.title} - Temple Address`
+        const data: ApiResponse = await response.json()
+        console.log("API response data:", data)
+
+        if (!data.success || !data.data) {
+          throw new Error(data.message || "Failed to fetch listing details")
         }
+
+        setListing(data.data)
+
+        // Set page title and meta description dynamically
+        document.title = `${data.data.title} - Temple Address`
+
+        // Update meta description
+        const metaDescription = document.createElement("meta")
+        metaDescription.name = "description"
+        metaDescription.content =
+          data.data.details ||
+          `Explore ${data.data.title} on Temple Address. Find details, timings, and more about this ${data.data.category?.name || "sacred place"} in ${data.data.location || "India"}.`
+
+        const existingDescription = document.querySelector('meta[name="description"]')
+        if (existingDescription) {
+          existingDescription.remove()
+        }
+        document.head.appendChild(metaDescription)
       } catch (error) {
-        console.error(`Error loading listing:`, error)
-        setError("Unable to load listing details")
-
-        // Even on error, provide fallback data
-        const fallbackListing: ListingDetail = {
-          ...sampleListings["sree-palakkottu-kshethram"],
-          slug: params.slug,
-          title: "Temple Listing",
-          details: "Sample temple listing for demonstration.",
-        }
-        setListing(fallbackListing)
-        setUsedFallbackData(true)
+        console.error(`Error fetching listing data:`, error)
+        setError(error instanceof Error ? error.message : "An unknown error occurred")
       } finally {
         setIsLoading(false)
       }
     }
 
     fetchListingData()
+
+    // Cleanup function
+    return () => {
+      const metaDesc = document.querySelector('meta[name="description"]')
+      if (metaDesc && metaDesc.getAttribute("content")?.includes("Temple Address")) {
+        metaDesc.remove()
+      }
+    }
   }, [params.slug])
 
   // Handle clicking outside to close the dropdown
@@ -467,17 +243,26 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
     return <ListingDetailSkeleton />
   }
 
-  // If we have no listing data (should never happen with fallbacks in place)
-  if (!listing) {
+  // Error state
+  if (error || !listing) {
     return (
       <div className="container px-4 py-16 mx-auto text-center">
         <div className="p-8 bg-white rounded-lg shadow-sm">
-          <AlertTriangle className="w-16 h-16 mx-auto text-yellow-500" />
-          <h2 className="mt-4 text-2xl font-bold">Listing Not Found</h2>
-          <p className="mt-2 text-gray-600">We couldn't find the listing you're looking for.</p>
-          <Button className="mt-6" onClick={() => router.push("/search")}>
-            View All Listings
-          </Button>
+          <AlertTriangle className="w-16 h-16 mx-auto text-red-500" />
+          <h2 className="mt-4 text-2xl font-bold">
+            {error === "Listing not found" ? "Listing Not Found" : "Unable to Load Listing"}
+          </h2>
+          <p className="mt-2 text-gray-600">
+            {error === "Listing not found"
+              ? "The requested listing could not be found. It may have been removed or the URL is incorrect."
+              : error || "There was an error loading the listing details."}
+          </p>
+          <div className="flex justify-center gap-4 mt-6">
+            <Button onClick={() => router.push("/search")}>View All Listings</Button>
+            <Button variant="outline" onClick={() => window.location.reload()}>
+              Try Again
+            </Button>
+          </div>
         </div>
       </div>
     )
@@ -512,7 +297,7 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
     return type.charAt(0).toUpperCase() + type.slice(1)
   }
 
-  // Add this helper function for copying to clipboard
+  // Helper function for copying to clipboard
   const copyToClipboard = (text: string) => {
     if (navigator.clipboard) {
       navigator.clipboard
@@ -559,16 +344,6 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
 
   return (
     <div className="min-h-screen bg-amber-50">
-      {/* Demo mode notice */}
-      {usedFallbackData && (
-        <div className="px-4 py-3 text-sm text-center text-blue-800 bg-blue-100 border-b border-blue-200">
-          <div className="flex items-center justify-center space-x-2">
-            <Info className="w-4 h-4" />
-            <span>Demo Mode: Displaying sample temple data for demonstration purposes.</span>
-          </div>
-        </div>
-      )}
-
       {/* Back button */}
       <div className="container px-4 pt-4 mx-auto">
         <Button
@@ -599,10 +374,16 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
           <div className="container px-4 pb-8 mx-auto">
             <h1 className="text-3xl font-bold text-white md:text-4xl">{listing.title}</h1>
             {listing.subtitle && <p className="mt-2 text-lg text-white/90">{listing.subtitle}</p>}
-            <div className="flex mt-4 space-x-2">
+            <div className="flex flex-wrap mt-4 space-x-2">
               <Badge className="bg-white/20 text-white">{formatListingType(listing.listing_type)}</Badge>
               {listing.category && <Badge className="bg-white/20 text-white">{listing.category.name}</Badge>}
-              {listing.status && <Badge className="bg-green-500/80 text-white">{listing.status}</Badge>}
+              {listing.status && (
+                <Badge
+                  className={`text-white ${listing.status === "VERIFIED" ? "bg-green-500/80" : "bg-yellow-500/80"}`}
+                >
+                  {listing.status}
+                </Badge>
+              )}
             </div>
           </div>
         </div>
@@ -627,7 +408,9 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
               <TabsContent value="overview" className="mt-0">
                 <div className="p-6 bg-white rounded-lg shadow-sm">
                   <h2 className="text-xl font-semibold">About {listing.title}</h2>
-                  {listing.details && <p className="mt-4 text-gray-700 leading-relaxed">{listing.details}</p>}
+                  {listing.details && (
+                    <p className="mt-4 text-gray-700 leading-relaxed whitespace-pre-line">{listing.details}</p>
+                  )}
 
                   {/* Location & Directions */}
                   {(listing.address || listing.location) && (
@@ -640,6 +423,7 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                           {!listing.address && listing.location && (
                             <p className="text-gray-700">
                               {listing.location}
+                              {listing.city && listing.location !== listing.city && `, ${listing.city}`}
                               {listing.state && `, ${listing.state}`}
                               {listing.country && `, ${listing.country}`}
                             </p>
@@ -686,7 +470,12 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                             <Phone className="w-5 h-5 mt-1 mr-3 text-primary" />
                             <div>
                               <p className="font-medium">Phone</p>
-                              <p className="text-sm text-gray-600">{listing.contact_number}</p>
+                              <a
+                                href={`tel:${listing.contact_number}`}
+                                className="text-sm text-blue-600 hover:underline"
+                              >
+                                {listing.contact_number}
+                              </a>
                             </div>
                           </div>
                         )}
@@ -696,7 +485,9 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                             <Mail className="w-5 h-5 mt-1 mr-3 text-primary" />
                             <div>
                               <p className="font-medium">Email</p>
-                              <p className="text-sm text-gray-600">{listing.email}</p>
+                              <a href={`mailto:${listing.email}`} className="text-sm text-blue-600 hover:underline">
+                                {listing.email}
+                              </a>
                             </div>
                           </div>
                         )}
@@ -706,13 +497,14 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                             <Globe className="w-5 h-5 mt-1 mr-3 text-primary" />
                             <div>
                               <p className="font-medium">Website</p>
-                              <Link
+                              <a
                                 href={listing.website}
                                 className="text-sm text-blue-600 hover:underline"
                                 target="_blank"
+                                rel="noopener noreferrer"
                               >
                                 {listing.website.replace(/^https?:\/\//, "")}
-                              </Link>
+                              </a>
                             </div>
                           </div>
                         )}
@@ -722,7 +514,14 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                             <MessageCircle className="w-5 h-5 mt-1 mr-3 text-primary" />
                             <div>
                               <p className="font-medium">WhatsApp</p>
-                              <p className="text-sm text-gray-600">{listing.whatsapp}</p>
+                              <a
+                                href={`https://wa.me/${listing.whatsapp.replace(/[^0-9]/g, "")}`}
+                                className="text-sm text-blue-600 hover:underline"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {listing.whatsapp}
+                              </a>
                             </div>
                           </div>
                         )}
@@ -740,7 +539,12 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                                 <p className="text-xs text-gray-500">{listing.contact_person_designation}</p>
                               )}
                               {listing.contact_person_phone && (
-                                <p className="mt-1 text-sm text-gray-600">{listing.contact_person_phone}</p>
+                                <a
+                                  href={`tel:${listing.contact_person_phone}`}
+                                  className="mt-1 text-sm text-blue-600 hover:underline block"
+                                >
+                                  {listing.contact_person_phone}
+                                </a>
                               )}
                             </div>
                           </div>
@@ -1022,21 +826,7 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                         <div className="p-4 border rounded-lg">
                           <h3 className="text-lg font-medium">Accepted Payment Methods</h3>
                           <div className="mt-2">
-                            {typeof listing.payment_methods === "string" ? (
-                              <p className="text-gray-700">{listing.payment_methods}</p>
-                            ) : typeof listing.payment_methods === "object" && listing.payment_methods !== null ? (
-                              <div className="flex flex-wrap gap-2">
-                                {Object.entries(listing.payment_methods)
-                                  .filter(([_, value]) => value)
-                                  .map(([key]) => (
-                                    <Badge key={key} variant="outline">
-                                      {key.replace(/_/g, " ").toUpperCase()}
-                                    </Badge>
-                                  ))}
-                              </div>
-                            ) : (
-                              <p className="text-gray-600">No payment method information available.</p>
-                            )}
+                            <p className="text-gray-700">{listing.payment_methods}</p>
                           </div>
                         </div>
                       )}
@@ -1066,7 +856,7 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                   {listing.history && (
                     <div className="mt-6">
                       <h3 className="text-lg font-medium">History</h3>
-                      <p className="mt-2 text-gray-700 leading-relaxed">{listing.history}</p>
+                      <p className="mt-2 text-gray-700 leading-relaxed whitespace-pre-line">{listing.history}</p>
                     </div>
                   )}
 
@@ -1074,7 +864,7 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                   {listing.story && (
                     <div className="mt-6">
                       <h3 className="text-lg font-medium">Story</h3>
-                      <p className="mt-2 text-gray-700 leading-relaxed">{listing.story}</p>
+                      <p className="mt-2 text-gray-700 leading-relaxed whitespace-pre-line">{listing.story}</p>
                     </div>
                   )}
 
@@ -1082,7 +872,7 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                   {listing.speciality && (
                     <div className="mt-6">
                       <h3 className="text-lg font-medium">Speciality</h3>
-                      <p className="mt-2 text-gray-700 leading-relaxed">{listing.speciality}</p>
+                      <p className="mt-2 text-gray-700 leading-relaxed whitespace-pre-line">{listing.speciality}</p>
                     </div>
                   )}
 
@@ -1090,7 +880,7 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                   {listing.remarks && (
                     <div className="mt-6">
                       <h3 className="text-lg font-medium">Visitor Information</h3>
-                      <p className="mt-2 text-gray-700 leading-relaxed">{listing.remarks}</p>
+                      <p className="mt-2 text-gray-700 leading-relaxed whitespace-pre-line">{listing.remarks}</p>
                     </div>
                   )}
                 </div>
@@ -1103,13 +893,13 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
               <div className="p-6 bg-white rounded-lg shadow-sm">
                 <h2 className="text-lg font-semibold">Quick Information</h2>
                 <div className="mt-4 space-y-3">
-                  {(listing.location || listing.state || listing.country) && (
+                  {(listing.location || listing.city || listing.state || listing.country) && (
                     <div className="flex">
                       <MapPin className="w-5 h-5 mt-1 mr-3 text-primary" />
                       <div>
                         <p className="font-medium">Location</p>
                         <p className="text-sm text-gray-600">
-                          {[listing.location, listing.state, listing.country].filter(Boolean).join(", ")}
+                          {[listing.location, listing.city, listing.state, listing.country].filter(Boolean).join(", ")}
                         </p>
                       </div>
                     </div>
@@ -1162,7 +952,7 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                       </div>
                     )}
 
-                    {listing.evening && (
+                    {listing.evening && listing.evening !== "Nil" && (
                       <div className="flex">
                         <Clock className="w-5 h-5 mt-1 mr-3 text-primary" />
                         <div>
@@ -1185,7 +975,9 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                         <Phone className="w-5 h-5 mt-1 mr-3 text-primary" />
                         <div>
                           <p className="font-medium">Phone</p>
-                          <p className="text-sm text-gray-600">{listing.contact_number}</p>
+                          <a href={`tel:${listing.contact_number}`} className="text-sm text-blue-600 hover:underline">
+                            {listing.contact_number}
+                          </a>
                         </div>
                       </div>
                     )}
@@ -1195,7 +987,9 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                         <Mail className="w-5 h-5 mt-1 mr-3 text-primary" />
                         <div>
                           <p className="font-medium">Email</p>
-                          <p className="text-sm text-gray-600">{listing.email}</p>
+                          <a href={`mailto:${listing.email}`} className="text-sm text-blue-600 hover:underline">
+                            {listing.email}
+                          </a>
                         </div>
                       </div>
                     )}
@@ -1205,13 +999,14 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                         <Globe className="w-5 h-5 mt-1 mr-3 text-primary" />
                         <div>
                           <p className="font-medium">Website</p>
-                          <Link
+                          <a
                             href={listing.website}
                             className="text-sm text-blue-600 hover:underline"
                             target="_blank"
+                            rel="noopener noreferrer"
                           >
                             {listing.website.replace(/^https?:\/\//, "")}
-                          </Link>
+                          </a>
                         </div>
                       </div>
                     )}
@@ -1225,7 +1020,7 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                   <h2 className="text-lg font-semibold">Social Media</h2>
                   <div className="flex flex-wrap mt-4 space-x-4">
                     {listing.facebook && (
-                      <Link
+                      <a
                         href={listing.facebook}
                         className="text-blue-600 hover:text-blue-800"
                         target="_blank"
@@ -1233,10 +1028,10 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                       >
                         <Facebook size={24} />
                         <span className="sr-only">Facebook</span>
-                      </Link>
+                      </a>
                     )}
                     {listing.twitter && (
-                      <Link
+                      <a
                         href={listing.twitter}
                         className="text-blue-400 hover:text-blue-600"
                         target="_blank"
@@ -1244,10 +1039,10 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                       >
                         <Twitter size={24} />
                         <span className="sr-only">Twitter</span>
-                      </Link>
+                      </a>
                     )}
                     {listing.instagram && (
-                      <Link
+                      <a
                         href={listing.instagram}
                         className="text-pink-600 hover:text-pink-800"
                         target="_blank"
@@ -1255,10 +1050,10 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                       >
                         <Instagram size={24} />
                         <span className="sr-only">Instagram</span>
-                      </Link>
+                      </a>
                     )}
                     {listing.youtube && (
-                      <Link
+                      <a
                         href={listing.youtube}
                         className="text-red-600 hover:text-red-800"
                         target="_blank"
@@ -1266,7 +1061,7 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                       >
                         <Youtube size={24} />
                         <span className="sr-only">YouTube</span>
-                      </Link>
+                      </a>
                     )}
                   </div>
                 </div>

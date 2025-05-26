@@ -72,7 +72,7 @@ export default function SearchPage() {
       const response = await fetch(apiUrl, {
         headers: {
           accept: "application/json",
-          "X-CSRFTOKEN": "AXH34jF0GUYC2nkSKfHuqDyzDoxIFu3OszQ7TdtqdCIcBUt0vFdTc25DY7yNCEDp",
+          "X-CSRFTOKEN": "Xh34Ju2QXd5Aej2S3FDL979SHavazMFdPTc8yoQguVPaNQb0O59aVwGW2TwfwWfO",
         },
         cache: "no-store",
       })

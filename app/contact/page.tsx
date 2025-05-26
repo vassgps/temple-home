@@ -21,7 +21,7 @@ export default function ContactPage() {
                   <MapPin className="w-5 h-5 mt-1 mr-3 text-primary" />
                   <div>
                     <h3 className="font-medium text-gray-900">Address</h3>
-                    <p className="text-gray-800">VASS ARCADE, Mayanad, Kerala, India - 673008</p>
+                    <p className="text-gray-800">18/505H, Mayanad, Kerala, India - 673008</p>
                   </div>
                 </div>
 
