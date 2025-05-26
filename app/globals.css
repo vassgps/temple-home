@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 251, 235;
+  --background-end-rgb: 255, 251, 235;
+  --primary: 139, 0, 0;
+  --primary-foreground: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+@layer base {
+  :root {
+    --background: 255, 251, 235;
+    --foreground: 20, 20, 20;
+    --card: 255, 255, 255;
+    --card-foreground: 20, 20, 20;
+    --popover: 255, 255, 255;
+    --popover-foreground: 20, 20, 20;
+    --primary: 139, 0, 0;
+    --primary-foreground: 255, 255, 255;
+    --secondary: 245, 245, 245;
+    --secondary-foreground: 20, 20, 20;
+    --muted: 240, 240, 240;
+    --muted-foreground: 115, 115, 115;
+    --accent: 245, 245, 245;
+    --accent-foreground: 20, 20, 20;
+    --destructive: 220, 38, 38;
+    --destructive-foreground: 255, 255, 255;
+    --border: 214, 214, 214;
+    --input: 214, 214, 214;
+    --ring: 139, 0, 0;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.hero-section {
+  background-image: url("/images/temple-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
