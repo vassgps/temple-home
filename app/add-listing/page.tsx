@@ -19,7 +19,7 @@ export default function AddListingPage() {
   const { toast } = useToast()
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "https://app.templeaddress.com"
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "https://uat.templeaddress.com"
 
   const [formData, setFormData] = useState({
     title: "",

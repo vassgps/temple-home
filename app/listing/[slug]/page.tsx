@@ -163,7 +163,7 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
       try {
         console.log(`Fetching data for slug: ${params.slug}`)
 
-        const response = await fetch(`https://app.templeaddress.com/api/v1/cms/listings/${params.slug}/`, {
+        const response = await fetch(`https://uat.templeaddress.com/api/v1/cms/listings/${params.slug}/`, {
           headers: {
             accept: "application/json",
             "X-CSRFTOKEN": "Xh34Ju2QXd5Aej2S3FDL979SHavazMFdPTc8yoQguVPaNQb0O59aVwGW2TwfwWfO",
@@ -281,7 +281,16 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
     },
     { id: "gallery", label: "Gallery", condition: !!(listing.gallery_items && listing.gallery_items.length) },
     { id: "poojas", label: "Poojas", condition: !!(listing.poojas && listing.poojas.length) },
-    { id: "payments", label: "Payments", condition: !!listing.seeking_donations },
+    {
+      id: "payments",
+      label: "Payments",
+      condition: !!(
+        listing.seeking_donations ||
+        listing.upi_id ||
+        listing.bank_account_name ||
+        listing.payment_methods
+      ),
+    },
     {
       id: "additional",
       label: "Additional Info",
@@ -766,7 +775,8 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
               <TabsContent value="payments" className="mt-0">
                 <div className="p-6 bg-white rounded-lg shadow-sm">
                   <h2 className="text-xl font-semibold">Donations & Payments</h2>
-                  {listing.seeking_donations ? (
+
+                  {listing.upi_id || listing.bank_account_name || listing.payment_methods ? (
                     <div className="mt-4 space-y-6">
                       {/* UPI Details */}
                       {listing.upi_id && (
@@ -831,18 +841,29 @@ export default function ListingDetailPage({ params }: { params: { slug: string }
                         </div>
                       )}
 
+                      {/* Seeking Donations Status */}
+                      {listing.seeking_donations && (
+                        <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                          <h3 className="text-lg font-medium text-green-800">Donations Welcome</h3>
+                          <p className="mt-1 text-sm text-green-700">
+                            This temple is currently accepting donations to support its activities and maintenance.
+                          </p>
+                        </div>
+                      )}
+
                       {/* Disclaimer */}
                       <div className="p-4 bg-gray-50 rounded-lg">
                         <h3 className="text-sm font-medium text-gray-700">Important Notice</h3>
                         <p className="mt-1 text-xs text-gray-600">
                           The payment details displayed on this page belong to the temple or organization's official
                           accounts. Please verify the details before making any payment. Temple Address does not hold
-                          any liabilities or involvement in the financial transactions made.
+                          any liabilities or involvement in the financial transactions made. Always ensure you are
+                          donating to legitimate temple accounts.
                         </p>
                       </div>
                     </div>
                   ) : (
-                    <p className="mt-4 text-gray-600">This temple is not currently accepting online donations.</p>
+                    <p className="mt-4 text-gray-600">No payment information available for this listing.</p>
                   )}
                 </div>
               </TabsContent>

@@ -101,7 +101,7 @@ export default function ProfilePage() {
 
   const router = useRouter()
   const searchParams = useSearchParams()
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "https://app.templeaddress.com"
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "https://uat.templeaddress.com"
 
   // Use a ref to track if we've already loaded mock data
   const usedMockDataRef = useRef(false)

@@ -67,7 +67,7 @@ export default function SearchPage() {
     try {
       console.log("Fetching listings from API...")
 
-      const apiUrl = url || "https://app.templeaddress.com/api/v1/cms/public-listings/"
+      const apiUrl = url || "https://uat.templeaddress.com/api/v1/cms/public-listings/"
 
       const response = await fetch(apiUrl, {
         headers: {
