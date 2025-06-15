@@ -78,10 +78,46 @@ export default function ListingPayments({ listing }: ListingPaymentsProps) {
               <CardDescription>Make a quick donation using UPI</CardDescription>
             </CardHeader>
             <CardContent>
-              {/* UPI ID displayed prominently */}
-              <div className="p-3 mb-4 text-center bg-amber-50 border border-amber-200 rounded-md">
-                <p className="font-medium">UPI ID:</p>
-                <p className="text-lg font-bold text-primary">{listing.upi_id}</p>
+              {/* UPI ID displayed prominently - Make it clickable */}
+              <div
+                className="p-3 mb-4 text-center bg-amber-50 border border-amber-200 rounded-md cursor-pointer hover:bg-amber-100 transition-colors"
+                onClick={() => {
+                  try {
+                    // Create UPI payment URL
+                    const upiUrl = `upi://pay?pa=${listing.upi_id}&pn=${encodeURIComponent(listing.title)}&cu=INR`
+
+                    // Try to open UPI app
+                    window.location.href = upiUrl
+
+                    // Fallback for desktop - show instructions
+                    setTimeout(() => {
+                      if (window.confirm("UPI app not found. Would you like to copy the UPI ID to clipboard?")) {
+                        navigator.clipboard
+                          .writeText(listing.upi_id)
+                          .then(() => {
+                            alert("UPI ID copied to clipboard!")
+                          })
+                          .catch(() => {
+                            prompt("Copy this UPI ID:", listing.upi_id)
+                          })
+                      }
+                    }, 1000)
+                  } catch (error) {
+                    console.error("Error opening UPI app:", error)
+                    // Fallback - copy to clipboard
+                    if (navigator.clipboard) {
+                      navigator.clipboard.writeText(listing.upi_id).then(() => {
+                        alert("UPI ID copied to clipboard!")
+                      })
+                    } else {
+                      prompt("Copy this UPI ID:", listing.upi_id)
+                    }
+                  }
+                }}
+              >
+                <p className="font-medium">UPI ID: (Tap to Pay)</p>
+                <p className="text-lg font-bold text-primary hover:text-primary/80">{listing.upi_id}</p>
+                <p className="text-xs text-gray-600 mt-1">Tap to open UPI apps like GPay, PhonePe, Paytm</p>
               </div>
 
               {listing.upi_qr_code || listing.upi_qr_code_url ? (
@@ -107,14 +143,32 @@ export default function ListingPayments({ listing }: ListingPaymentsProps) {
                 className="w-full bg-primary hover:bg-primary/90"
                 onClick={() => {
                   try {
-                    // In a real app, this would open the UPI app
-                    window.open(
-                      `upi://pay?pa=${listing.upi_id}&pn=${encodeURIComponent(listing.title)}&cu=INR`,
-                      "_blank",
-                    )
+                    // Create UPI payment URL with better parameters
+                    const upiUrl = `upi://pay?pa=${listing.upi_id}&pn=${encodeURIComponent(listing.title)}&mc=0000&tid=${Date.now()}&cu=INR`
+
+                    // Try to open UPI app
+                    window.location.href = upiUrl
+
+                    // Fallback for desktop or if no UPI app is found
+                    setTimeout(() => {
+                      if (window.confirm("UPI app not found. Would you like to copy the UPI ID to clipboard?")) {
+                        navigator.clipboard
+                          .writeText(listing.upi_id)
+                          .then(() => {
+                            alert("UPI ID copied to clipboard!")
+                          })
+                          .catch(() => {
+                            prompt("Copy this UPI ID:", listing.upi_id)
+                          })
+                      }
+                    }, 1000)
                   } catch (error) {
                     console.error("Error opening UPI app:", error)
-                    setError("Failed to open UPI app. Please try manually.")
+                    setError("Failed to open UPI app. UPI ID copied to clipboard.")
+                    // Fallback - copy to clipboard
+                    if (navigator.clipboard) {
+                      navigator.clipboard.writeText(listing.upi_id)
+                    }
                   }
                 }}
               >
